@@ -39,9 +39,10 @@ resource "kubernetes_manifest" "sa-alb-controller" {
         "app.kubernetes.io/component"  = "controller" 
         "app.kubernetes.io/name"       = "aws-load-balancer-controller"
       }
+      "annotations" = {
+         "eks.amazonaws.com/role-arn" = "arn:aws:iam::${var.aws_account}:role/${aws_iam_role.albcontriamrole.name}"
+      }
     }
-    "annotations" = {
-      "eks.amazonaws.com/role-arn" = "arn:aws:iam::${var.aws_account}:role/${aws_iam_role.albcontriamrole.name}"
-    }
+
   }
 }
