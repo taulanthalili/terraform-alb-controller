@@ -21,7 +21,7 @@ module "aws_alb_controller" {
   region             = module.data.region
   aws_account        = module.data.aws_account
   cluster_name       = module.data.aws_eks_cluster
-  oidc_provider_id   = moduel.data.oidc_provider_id
+  oidc_provider_id   = split("/",module.eks.oidc_provider)[2]
 }
 ```
 ref: https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
