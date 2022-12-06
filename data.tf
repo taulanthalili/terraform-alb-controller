@@ -1,6 +1,6 @@
 
 resource "aws_iam_policy" "albcontriampolicy" {
-  name   = "AWSLoadBalancerControllerIAMPolicy"
+  name   = "AWSLoadBalancerControllerIAMPolicy${var.cluster_name}"
 
   policy = "${file("${path.module}/files/iam_policy.json")}"
 }
@@ -19,7 +19,7 @@ data "template_file" "iam-role-template" {
 }
 
 resource "aws_iam_role" "albcontriamrole" {
-  name               = "AmazonEKSLoadBalancerControllerRole"
+  name               = "AmazonEKSLoadBalancerControllerRole${var.cluster_name}"
   assume_role_policy = data.template_file.iam-role-template.rendered
 }
 
