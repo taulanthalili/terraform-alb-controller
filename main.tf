@@ -21,7 +21,7 @@ resource "helm_release" "alb_ingress_controller" {
 
   set {
     name  = "serviceAccount.name"
-    value = "${kubernetes_manifest.sa-alb-controller.name}" #"aws-load-balancer-controller" ##The SA needs to exists
+    value = "aws-load-balancer-controller" #"${kubernetes_manifest.sa-alb-controller}" The SA needs to exists
     type  = "string"
   }
 
@@ -30,4 +30,7 @@ resource "helm_release" "alb_ingress_controller" {
     value = "602401143452.dkr.ecr.${var.region}.amazonaws.com/amazon/aws-load-balancer-controller"
     type  = "string"
   }
+  depends_on = [
+    kubernetes_manifest.sa-alb-controller
+  ]
 }

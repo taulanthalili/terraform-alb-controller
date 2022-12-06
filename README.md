@@ -19,7 +19,7 @@ How to use it
 module "aws_alb_controller" {
   source             = "git@github.com:taulanthalili/terraform-alb-controller.git?ref=main"
   region             = module.data.region
-  aws_account        = module.data.argocd_project
+  aws_account        = module.data.aws_account
   cluster_name       = module.data.aws_eks_cluster
   oidc_provider_id   = moduel.data.oidc_provider_id
 }
