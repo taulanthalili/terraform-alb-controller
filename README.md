@@ -17,7 +17,7 @@ Familiarity with Kubernetes service and ingress resources.
 How to use it
 ```
 module "aws_alb_controller" {
-  source             = "git@github.com:taulanthalili/terraform-alb-controller.git?ref=main"
+  source             = "git::https://github.com/taulanthalili/terraform-alb-controller.git?ref=main"
   region             = module.data.region
   aws_account        = module.data.aws_account
   cluster_name       = module.data.aws_eks_cluster
